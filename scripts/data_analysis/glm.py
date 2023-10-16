@@ -4,12 +4,11 @@ import statsmodels.formula.api as smf
 
 
 def glm(formula, data_df):
-    model = smf.glm(formula = formula, 
-                    data = data_df, 
-                    family = sm.families.Poisson())
+    model = smf.glm(formula=formula, data=data_df, family=sm.families.Poisson())
 
     result = model.fit()
     print(result.summary())
+
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
@@ -18,21 +17,31 @@ if __name__ == "__main__":
     viewpoint_data_df = pd.read_csv(
         "data/results/viewpoint/processed/aggregated_output.csv"
     )
-    
-    print('*** Answerability user study ***')
 
-    print('Familiarity as an dependent variable')
-    glm('familiarity ~ factuality + confidence + satisfaction', answerability_data_df)
+    print("*** Answerability user study ***")
 
-    print('Satisfaction as an dependent variable')
-    glm('satisfaction ~ familiarity + factuality + confidence', answerability_data_df)
+    print("Familiarity as an dependent variable")
+    glm(
+        "familiarity ~ factuality + confidence + satisfaction",
+        answerability_data_df,
+    )
 
+    print("Satisfaction as an dependent variable")
+    glm(
+        "satisfaction ~ familiarity + factuality + confidence",
+        answerability_data_df,
+    )
 
-    print('*** Viewpoint user study ***')
+    print("*** Viewpoint user study ***")
 
-    print('Familiarity as an dependent variable')
-    glm('familiarity ~ diversity + transparency + bias + satisfaction', viewpoint_data_df)
+    print("Familiarity as an dependent variable")
+    glm(
+        "familiarity ~ diversity + transparency + bias + satisfaction",
+        viewpoint_data_df,
+    )
 
-    print('Satisfaction as an dependent variable')
-    glm('satisfaction ~ familiarity + diversity + transparency + bias', viewpoint_data_df)
-    
+    print("Satisfaction as an dependent variable")
+    glm(
+        "satisfaction ~ familiarity + diversity + transparency + bias",
+        viewpoint_data_df,
+    )
