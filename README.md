@@ -15,12 +15,12 @@ Users are presented with a set of queries together with responses and asked to a
 
 ![alt text](research_questions.png)
 
-The methodology, execution, and design of the crowdsourcing experiments are covered in detail [here](data/user_study_setup/README.md).
+The methodology, execution, and design of the crowdsourcing experiments are covered in detail [here](crowdsourcing_task_design/README.md).
 
 ## Data
 
-For each user study, we select a set of ten queries that are susceptible to one of the identified problems. For each query, we manually create different variants of responses differing in terms of *controlled dimensions* (1) factual correctness and (2) source presence/validity in the *Answerability Study*, and (1) viewpoint diversity and (2) balanced viewpoint presentation in the *Viewpoints Study*. The data used as an input to our crowdsourcing tasks is covered in detail [here](data/input_data/README.md).
+For each user study, we select a set of ten queries that are susceptible to one of the identified problems. For each query, we manually create different variants of responses differing in terms of *controlled dimensions* (1) factual correctness and (2) source presence/validity in the *Answerability Study*, and (1) viewpoint diversity and (2) balanced viewpoint presentation in the *Viewpoints Study*. The data used as an input to our crowdsourcing tasks is covered in detail [here](data/README.md).
 
 ## Results
 
-The results of our crowdsourcing tasks and the data analysis are covered in details [here](data/results/README.md).
+The results of our crowdsourcing tasks and the data analysis are covered in details [here](results/README.md).
