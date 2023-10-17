@@ -1,3 +1,6 @@
+"""Script used for generating sentiment labels for the comments provided by
+crowd workers in the user study."""
+
 import pandas as pd
 from transformers import pipeline
 
@@ -7,10 +10,10 @@ if __name__ == "__main__":
     )
 
     answerability_data_df = pd.read_csv(
-        "data/results/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output.csv"
     )
     viewpoint_data_df = pd.read_csv(
-        "data/results/viewpoint/processed/aggregated_output.csv"
+        "results/user_study_output/viewpoints/processed/aggregated_output.csv"
     )
 
     for user_study_name, data_df in zip(
@@ -28,7 +31,7 @@ if __name__ == "__main__":
         data_df["sentiment_score"] = sentiment_scores
 
         data_df.to_csv(
-            "data/results/"
+            "results/user_study_output/"
             + user_study_name
             + "/processed/aggregated_output_sentiment_labels.csv"
         )

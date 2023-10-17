@@ -1,3 +1,4 @@
+"""Script for generating demographic information from the user studies. """
 from collections import Counter
 
 import pandas as pd
@@ -20,10 +21,10 @@ gender_mapping = {1: "Male", 2: "Female", 3: "Other", 5: "Prefer not to say"}
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
-        "data/results/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output.csv"
     )
     viewpoint_data_df = pd.read_csv(
-        "data/results/viewpoint/processed/aggregated_output.csv"
+        "results/user_study_output/viewpoints/processed/aggregated_output.csv"
     )
 
     for user_study_name, data_df in zip(

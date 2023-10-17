@@ -1,11 +1,23 @@
 import argparse
+from typing import List, Tuple
 
 import pandas as pd
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm
 
 
-def effect_size(aov_table, data_df):
+def effect_size(
+    aov_table: pd.DataFrame, data_df: pd.DataFrame
+) -> Tuple[List[float], List[str]]:
+    """Calculates the effect size for each parameter.
+
+    Args:
+        aov_table: Pd.DataFrame containing the ANOVA table.
+        data_df: Dataframe containing the data.
+
+    Returns:
+        A tuple containing the effect size and the size.
+    """
     w2facts = []
     sizes = []
     for id, row in aov_table.iterrows():
@@ -27,15 +39,26 @@ def effect_size(aov_table, data_df):
     return w2facts, sizes
 
 
-def one_way_anova(data_df, answer_feature, independent_variable):
+def one_way_anova(
+    data_df: pd.DataFrame,
+    response_dimension: List[str],
+    independent_variable: str,
+):
+    """Runs a one-way ANOVA test.
+
+    Args:
+        data_df: Dataframe containing the data.
+        response_dimension: _description_
+        independent_variable: _description_
+    """
     dataframe = pd.DataFrame(
         {
             independent_variable: list(data_df[independent_variable]),
-            answer_feature: list(data_df[answer_feature]),
+            response_dimension: list(data_df[response_dimension]),
         }
     )
 
-    formula = answer_feature + " ~ C(" + independent_variable + ") "
+    formula = response_dimension + " ~ C(" + independent_variable + ") "
     model = ols(formula, dataframe).fit()
     aov_table = anova_lm(model, typ=2)
 
@@ -59,7 +82,7 @@ def one_way_anova(data_df, answer_feature, independent_variable):
             if pvalue <= 0.05:
                 print(
                     "\\textbf{"
-                    + answer_feature
+                    + response_dimension
                     + "} & \\textbf{"
                     + param
                     + "} & \\textbf{"
@@ -74,7 +97,7 @@ def one_way_anova(data_df, answer_feature, independent_variable):
                 )
             else:
                 print(
-                    answer_feature
+                    response_dimension
                     + " & "
                     + param
                     + " & "
@@ -89,19 +112,31 @@ def one_way_anova(data_df, answer_feature, independent_variable):
                 )
 
 
-def two_way_anova(data_df, answer_feature, second_independent_variable):
+def two_way_anova(
+    data_df: pd.DataFrame,
+    response_dimension: List[str],
+    second_independent_variable: str,
+):
+    """Runs a two-way ANOVA test.
+
+    Args:
+        data_df: Dataframe containing the data.
+        response_dimension: List of response dimensions.
+        second_independent_variable: Second independent variable.
+    """
+
     dataframe = pd.DataFrame(
         {
             "answers_ids": list(data_df["answers_ids"]),
             second_independent_variable: list(
                 data_df[second_independent_variable]
             ),
-            answer_feature: list(data_df[answer_feature]),
+            response_dimension: list(data_df[response_dimension]),
         }
     )
 
     formula = (
-        answer_feature
+        response_dimension
         + " ~ C(answers_ids) + C("
         + second_independent_variable
         + ") + C(answers_ids):C("
@@ -131,7 +166,7 @@ def two_way_anova(data_df, answer_feature, second_independent_variable):
             if pvalue <= 0.05:
                 print(
                     "\\textbf{"
-                    + answer_feature
+                    + response_dimension
                     + "} & \\textbf{"
                     + param
                     + "} & \\textbf{"
@@ -146,7 +181,7 @@ def two_way_anova(data_df, answer_feature, second_independent_variable):
                 )
             else:
                 print(
-                    answer_feature
+                    response_dimension
                     + " & "
                     + param
                     + " & "
@@ -163,22 +198,16 @@ def two_way_anova(data_df, answer_feature, second_independent_variable):
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
-        "data/results/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output.csv"
     )
     viewpoint_data_df = pd.read_csv(
-        "data/results/viewpoint/processed/aggregated_output.csv"
+        "results/user_study_output/viewpoints/processed/aggregated_output.csv"
     )
-
-    # Sampling data for manual analysis
-    # answerability_data_df_sample = answerability_data_df.groupby("questions_ids").sample(3)
-    # answerability_data_df_sample.to_csv("answerablity_sample.csv")
-    # viewpoint_data_df_sample = viewpoint_data_df.groupby("questions_ids").sample(3)
-    # viewpoint_data_df_sample.to_csv("viewpoint_sample.csv")
 
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--type",
-        help="Argument type is required and must be either 'one-way' or 'two-way'.",
+        help="Argument type is required. Select 'one-way' or 'two-way'.",
     )
     args = parser.parse_args()
 
@@ -192,21 +221,21 @@ if __name__ == "__main__":
             ]:
                 print("\hline")
                 if "diversity" in list(data_df.columns):
-                    answer_features = [
+                    response_dimensions = [
                         "diversity",
                         "transparency",
                         "bias",
                         "satisfaction",
                     ]
                 else:
-                    answer_features = [
+                    response_dimensions = [
                         "factuality",
                         "confidence",
                         "satisfaction",
                     ]
                 if independent_var == "questions_ids":
-                    answer_features = ["familiarity"] + answer_features
-                for feature in answer_features:
+                    response_dimensions = ["familiarity"] + response_dimensions
+                for feature in response_dimensions:
                     one_way_anova(data_df, feature, independent_var)
 
     elif args.type == "two-way":
@@ -217,22 +246,22 @@ if __name__ == "__main__":
                 "questions_ids",
             ]:
                 if "diversity" in list(data_df.columns):
-                    answer_features = [
+                    response_dimensions = [
                         "diversity",
                         "transparency",
                         "bias",
                         "satisfaction",
                     ]
                 else:
-                    answer_features = [
+                    response_dimensions = [
                         "factuality",
                         "confidence",
                         "satisfaction",
                     ]
 
                 print("\hline")
-                for answer_feature in answer_features:
-                    two_way_anova(data_df, answer_feature, independent_var)
+                for response_dimension in response_dimensions:
+                    two_way_anova(data_df, response_dimension, independent_var)
                     print("\hline")
 
     else:

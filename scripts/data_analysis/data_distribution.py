@@ -1,61 +1,71 @@
 import collections
+from typing import List
 
 import matplotlib.pyplot as plt
 import pandas as pd
 
 
-def generate_data_for_plot(answer_features, data_df):
-    values_per_question_hist = collections.defaultdict(dict)
+def process_data_for_distribution_plot(response_dimensions: List[str], data_df: pd.DataFrame):
+    """Processes the data for the distribution plot.
 
-    for question_id in range(1, 11):
-        for answer_feature in answer_features:
-            question_sub_df = data_df[data_df["questions_ids"] == question_id]
-            question_metric_values = list(question_sub_df[answer_feature])
-            values_per_question_hist[question_id][
-                answer_feature
-            ] = question_metric_values
+    Args:
+        response_dimensions: The response dimensions used in a user study.
+        data_df: Dataframe containing the results from a user study.
 
-    return values_per_question_hist
+    Returns:
+        A dictionary containing the data for the distribution plot.
+    """
+    values_per_query = collections.defaultdict(dict)
+
+    for query_id in range(1, 11):
+        for response_dimension in response_dimensions:
+            query_sub_df = data_df[data_df["questions_ids"] == query_id]
+            query_response_dimension_values = list(query_sub_df[response_dimension])
+            values_per_query[query_id][
+                response_dimension
+            ] = query_response_dimension_values
+
+    return values_per_query
 
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
-        "data/results/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output.csv"
     )
     viewpoint_data_df = pd.read_csv(
-        "data/results/viewpoint/processed/aggregated_output.csv"
+        "results/user_study_output/viewpoints/processed/aggregated_output.csv"
     )
-    answer_features_answ = [
+    response_dimensions_answerability = [
         "familiarity",
         "factuality",
         "confidence",
         "satisfaction",
     ]
-    answer_ids_answ = ["A1", "A2", "A3", "A4"]
-    values_per_question_hist_answ = generate_data_for_plot(
-        answer_features_answ, answerability_data_df
+    answer_ids_answerability = ["A1", "A2", "A3", "A4"]
+    values_per_query_answerability = process_data_for_distribution_plot(
+        response_dimensions_answerability, answerability_data_df
     )
 
-    answer_features_view = [
+    response_dimensions_viewpoints = [
         "familiarity",
         "diversity",
         "transparency",
         "bias",
         "satisfaction",
     ]
-    answer_ids_view = ["A1", "A2", "A3"]
-    values_per_question_hist_view = generate_data_for_plot(
-        answer_features_view, viewpoint_data_df
+    answer_ids_viewpoints = ["A1", "A2", "A3"]
+    values_per_query_viewpoints = process_data_for_distribution_plot(
+        response_dimensions_viewpoints, viewpoint_data_df
     )
 
     n_col = 5
     fig, axs = plt.subplots(2, n_col, figsize=(15, 6))
-    for id, answer_feature in enumerate(answer_features_answ):
+    for id, response_dimension in enumerate(response_dimensions_answerability):
         boxplot_data = []
 
-        for question_id in range(1, 11):
+        for query_id in range(1, 11):
             boxplot_data.append(
-                values_per_question_hist_answ[question_id][answer_feature]
+                values_per_query_answerability[query_id][response_dimension]
             )
 
         axs[int(id / n_col)][id % n_col].boxplot(boxplot_data)
@@ -64,19 +74,19 @@ if __name__ == "__main__":
             "Worker Self-Reported Score"
         )
         axs[int(id / n_col)][id % n_col].set_title(
-            answer_feature.replace("bias", "balance")
+            response_dimension.replace("bias", "balance")
             .replace("factuality", "Factual Correctness")
             .replace("satisfaction", "Overall Satisfaction")
             .title()
         )
 
-    for i, answer_feature in enumerate(answer_features_view):
+    for i, response_dimension in enumerate(response_dimensions_viewpoints):
         id = i + 5
         boxplot_data = []
 
-        for question_id in range(1, 11):
+        for query_id in range(1, 11):
             boxplot_data.append(
-                values_per_question_hist_view[question_id][answer_feature]
+                values_per_query_viewpoints[query_id][response_dimension]
             )
 
         axs[int(id / n_col)][id % n_col].boxplot(boxplot_data)
@@ -85,11 +95,11 @@ if __name__ == "__main__":
             "Worker Self-Reported Score"
         )
         axs[int(id / n_col)][id % n_col].set_title(
-            answer_feature.replace("bias", "balance")
+            response_dimension.replace("bias", "balance")
             .replace("factuality", "Factual Correctness")
             .replace("satisfaction", "Overall Satisfaction")
             .title()
         )
     fig.tight_layout(pad=1.0)
     plt.figure(dpi=2000)
-    fig.savefig("data/results/data_distribution.png")
+    fig.savefig("results/quantitative_analysis/data_distribution.png")
