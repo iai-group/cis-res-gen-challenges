@@ -5,11 +5,14 @@ import pandas as pd
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument("--user_study", help="Argument user_study is required and must be either 'answerability' or 'viewpoint'.")
+    parser.add_argument(
+        "--user_study",
+        help="Argument user_study is required and must be either 'answerability' or 'viewpoint'.",
+    )
     args = parser.parse_args()
 
     if args.user_study == "answerability":
-        directory = "data/results/answerability/processed/"
+        directory = "results/user_study_output/answerability/processed/"
         number_of_files = 12
         metrics = [
             "summary_result",
@@ -18,8 +21,8 @@ if __name__ == "__main__":
             "confidence",
             "satisfaction",
         ]
-    elif args.user_study == "viewpoint":
-        directory = "data/results/viewpoint/processed/"
+    elif args.user_study == "viewpoints":
+        directory = "results/user_study_output/viewpoints/processed/"
         number_of_files = 9
         metrics = [
             "summary_result",

@@ -1,3 +1,5 @@
+"""Script for the analysis of the results of response verification in the
+viewpoints user study."""
 import math
 
 import matplotlib.pyplot as plt
@@ -6,7 +8,7 @@ import pandas as pd
 
 if __name__ == "__main__":
     answer_evaluation = pd.read_csv(
-        "data/input_data/question_selection/viewpoint/answer_validation.csv"
+        "data/responses/viewpoints_response_validation/answer_validation.csv"
     )
     answer_evaluation = answer_evaluation.fillna("")
     answer_evaluation = answer_evaluation.iloc[2:].set_axis(
@@ -53,7 +55,7 @@ if __name__ == "__main__":
     plt.boxplot(diversity_values, whis=whis_div)
     plt.title("Diversity")
     plt.savefig(
-        "data/input_data/question_selection/viewpoint/answer_validation_diversity_boxplot.png"
+        "data/responses/viewpoints_response_validation/answer_validation_diversity_boxplot.png"
     )
 
     answer_with_diversity_outliers = np.array(diversity_values[0])
@@ -80,7 +82,7 @@ if __name__ == "__main__":
     plt.boxplot(balance_values, whis=whis_bal)
     plt.title("Balance")
     plt.savefig(
-        "data/input_data/question_selection/viewpoint/answer_validation_balance_boxplot.png"
+        "data/responses/viewpoints_response_validation/answer_validation_balance_boxplot.png"
     )
 
     print("Balance:")

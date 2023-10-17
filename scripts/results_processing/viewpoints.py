@@ -5,7 +5,7 @@ import pandas as pd
 if __name__ == "__main__":
     for output_id in range(1, 10):
         output = pd.read_csv(
-            "data/results/viewpoint/mturk_output/QS"
+            "results/user_study_output/viewpoints/mturk_output/QS"
             + str(output_id)
             + "_output.csv"
         )
@@ -147,7 +147,7 @@ if __name__ == "__main__":
 
         results_df = results_df.sort_values("questions_ids")
         results_df.to_csv(
-            "data/results/viewpoint/processed/QS"
+            "results/user_study_output/viewpoints/processed/QS"
             + str(output_id)
             + "_output_processed.csv"
         )

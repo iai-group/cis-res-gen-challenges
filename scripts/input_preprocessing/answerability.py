@@ -1,11 +1,12 @@
+"""Script for creating the input data for the answerability user study."""
 import random
 
 import pandas as pd
 
 if __name__ == "__main__":
-    input = pd.read_csv("data/input_data/answerability_input_data.csv")
+    input = pd.read_csv("data/responses/answerability_data.csv")
     question_sets = pd.read_csv(
-        "data/user_study_setup/answerability_question_sets.csv"
+        "data/input/answerability_question_sets.csv"
     )
     question_sets_ids = list(question_sets.columns)[1:]
 
@@ -71,8 +72,8 @@ if __name__ == "__main__":
 
         question_set_data = question_set_data.sample(frac=1)
         question_set_data.to_csv(
-            "data/input_data/question_sets/answerability/QS"
-            + question_set_id
+            "data/input/answerability/QS"
+            + question_set_id.replace("HIT", "")
             + ".csv",
             index=False,
         )
@@ -86,8 +87,8 @@ if __name__ == "__main__":
 
         question_set_data_mturk = pd.DataFrame(question_set_data_mturk_dict)
         question_set_data_mturk.to_csv(
-            "data/input_data/question_sets/answerability/QS"
-            + question_set_id
+            "data/input/answerability/mturk_input_format/QS"
+            + question_set_id.replace("HIT", "")
             + "_input.csv",
             index=False,
         )

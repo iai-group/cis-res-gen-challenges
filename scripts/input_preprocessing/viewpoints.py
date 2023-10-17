@@ -1,11 +1,12 @@
+"""Script for creating input data for the viewpoints user study."""""
 import random
 
 import pandas as pd
 
 if __name__ == "__main__":
-    input = pd.read_csv("data/input_data/viewpoint_input_data.csv")
+    input = pd.read_csv("data/responses/viewpoints_data.csv")
     question_sets = pd.read_csv(
-        "data/user_study_setup/viewpoint_question_sets.csv"
+        "data/input/viewpoints_question_sets.csv"
     )
     question_sets_ids = list(question_sets.columns)[1:]
 
@@ -21,11 +22,11 @@ if __name__ == "__main__":
         for question, answer_id in answers_ids_to_add.items():
             input_row = input[input["Query"] == question]
 
-            answers_to_add.append(list(input_row[answer_id])[0])
+            answers_to_add.append(list(input_row[answer_id.replace("EC_", "A")])[0])
 
             summaries = {}
             summaries_columns = [
-                "Summary " + answer_id,
+                "Summary " + answer_id.replace("EC_", "A"),
                 "Summary incorrect 1",
                 "Summary incorrect 2",
             ]
@@ -59,8 +60,8 @@ if __name__ == "__main__":
 
         question_set_data = question_set_data.sample(frac=1)
         question_set_data.to_csv(
-            "data/input_data/question_sets/viewpoint/QS"
-            + question_set_id
+            "data/input/viewpoints/QS"
+            + question_set_id.replace("HIT", "")
             + ".csv",
             index=False,
         )
@@ -76,8 +77,8 @@ if __name__ == "__main__":
         question_set_data_mturk
 
         question_set_data_mturk.to_csv(
-            "data/input_data/question_sets/viewpoint/QS"
-            + question_set_id
+            "data/input/viewpoints/mturk_input_format/QS"
+            + question_set_id.replace("HIT", "")
             + "_input.csv",
             index=False,
         )
