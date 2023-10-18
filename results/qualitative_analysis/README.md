@@ -16,7 +16,7 @@ Sentiment labels can be obtained by running [this script](../../scripts/data_ana
 
 In an attempt to explain the overall satisfaction with the response using natural language comments provided by the crowd workers, we manually label 360 user comments in the answerability study and 270 in the viewpoints study. The manual labels can be found [here](answerability_study.csv) for the *answerability study* and [here](viewpoints_study.csv) for the *viewpoints study*.
 
-We count the appearance of every label used in our annotation process for every combination of the experimental condition and satisfaction score. The results can be found [here](answerability_study-qualitative_analysis.csv) for the *answerability study* and [here](viewpoints_study-qualitative_analysis.csv) for the *viewpoints study*.
+We count the appearance of every label used in our annotation process for every combination of the experimental condition and satisfaction score. The results can be found [here](answerability_study-qualitative_analysis_stats.csv) for the *answerability study* and [here](viewpoints_study-qualitative_analysis_stats.csv) for the *viewpoints study*.
 
 ### Analysis of the results
 
