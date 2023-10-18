@@ -4,4 +4,4 @@ The distribution of query-response pairs between questions sets in the user stud
 
 Question sets used as input for the *answerability study* can be found [here](answerability/) (and [here](answerability/mturk_input_format/) in the MTurk input format). Question sets fused as input for the *viewpoints study* can be found [here](viewpoints/) (and [here](viewpoints/mturk_input_format/) in the MTurk input format).
 
-[This script](../../scripts/input_preprocessing/answerability.py) has been used for preparing input for the *answerability study* and [this script](../../scripts/input_preprocessing/viewpoint.py) has been used for preparing input for the *viewpoints study*.
+[This script](../../scripts/input_preprocessing/answerability.py) has been used for preparing input for the *answerability study* and [this script](../../scripts/input_preprocessing/viewpoints.py) has been used for preparing input for the *viewpoints study*.
