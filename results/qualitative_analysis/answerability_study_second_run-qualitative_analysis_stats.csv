@@ -1,0 +1,18 @@
+answer_conditions,satisfaction,familiarity with the topic,unfamiliarity with the topic,presence of source,source credibility,lack of source,invalid source,factual correctness,recognized hallucinated facts,complete information,missing information/incomplete information,agreement with the answer,disagreement with the answer,coherence/fluency/naturalness/logical/detailed,usefulness,bias/subjectivity
+A1,1,0,0,1,0,0,0,0,0,0,6,0,1,0,0,1
+,2,0,1,6,3,1,0,3,0,0,10,0,3,1,0,6
+,3,1,8,8,0,0,3,12,0,7,18,5,1,20,2,4
+,4,11,4,14,6,1,2,17,1,25,1,10,2,30,3,0
+A2,1,0,0,0,0,0,0,0,0,0,0,0,1,0,0,1
+,2,0,4,0,0,2,0,0,0,1,8,0,0,2,1,0
+,3,4,9,1,0,7,0,13,1,3,34,4,3,15,1,5
+,4,11,5,1,0,1,0,22,0,22,3,15,1,29,6,0
+A3,1,0,1,0,0,0,1,0,3,0,3,0,1,0,0,0
+,2,3,2,4,2,0,1,3,4,0,17,1,3,2,1,1
+,3,3,6,8,3,1,3,9,1,5,14,1,1,15,3,2
+,4,8,9,21,9,0,1,27,1,18,2,8,0,36,9,2
+A4,1,2,0,0,0,0,0,0,4,0,6,0,1,0,0,0
+,2,1,2,0,0,1,0,1,5,0,10,0,0,2,0,1
+,3,1,17,0,0,6,0,9,8,4,22,6,1,13,5,1
+,4,7,11,0,0,1,0,17,0,15,2,10,0,20,4,0
+SUM,,52,79,64,23,21,11,133,28,100,156,60,19,185,35,24
