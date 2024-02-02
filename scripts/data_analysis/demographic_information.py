@@ -21,7 +21,7 @@ gender_mapping = {1: "Male", 2: "Female", 3: "Other", 5: "Prefer not to say"}
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
-        "results/user_study_output/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output_both_runs.csv"
     )
     viewpoint_data_df = pd.read_csv(
         "results/user_study_output/viewpoints/processed/aggregated_output.csv"

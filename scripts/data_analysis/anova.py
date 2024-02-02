@@ -201,7 +201,7 @@ def two_way_anova(
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
-        "results/user_study_output/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output_both_runs.csv"
     )
     viewpoint_data_df = pd.read_csv(
         "results/user_study_output/viewpoints/processed/aggregated_output.csv"
@@ -262,7 +262,7 @@ if __name__ == "__main__":
                                                 nobs = assumption.n, use_var="equal")
                         ese = np.sqrt(ese)
                         print("Cohen's f effect size of experimental condition on " + feature + ": " + str(ese))                    
-                        ese = 0.4
+                        ese = 0.1
                         sample_size = FTestAnovaPower().solve_power(effect_size=ese, nobs=None, 
                                                 alpha=0.05, k_groups=len(assumption), power=0.8)
                         print("Sample size as a result of power analysis for large effect size (0.4): " + str(sample_size))

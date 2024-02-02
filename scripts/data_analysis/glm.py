@@ -21,7 +21,7 @@ def glm(formula: str, data_df: pd.DataFrame) -> str:
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
-        "results/user_study_output/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output_both_runs.csv
     )
     viewpoint_data_df = pd.read_csv(
         "results/user_study_output/viewpoints/processed/aggregated_output.csv"
