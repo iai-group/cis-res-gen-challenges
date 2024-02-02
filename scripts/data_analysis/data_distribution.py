@@ -30,7 +30,7 @@ def process_data_for_distribution_plot(response_dimensions: List[str], data_df: 
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
-        "results/user_study_output/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output_both_runs.csv"
     )
     viewpoint_data_df = pd.read_csv(
         "results/user_study_output/viewpoints/processed/aggregated_output.csv"
@@ -69,14 +69,15 @@ if __name__ == "__main__":
             )
 
         axs[int(id / n_col)][id % n_col].boxplot(boxplot_data)
-        axs[int(id / n_col)][id % n_col].set_xlabel("Query")
+        axs[int(id / n_col)][id % n_col].set_xlabel("Query ID")
         axs[int(id / n_col)][id % n_col].set_ylabel(
-            "Worker Self-Reported Score"
+            "Worker Self-Reported Rating"
         )
         axs[int(id / n_col)][id % n_col].set_title(
             response_dimension.replace("bias", "balance")
             .replace("factuality", "Factual Correctness")
             .replace("satisfaction", "Overall Satisfaction")
+            .replace("confidence", "Confidence in Answer Accuracy")
             .title()
         )
 
@@ -90,14 +91,15 @@ if __name__ == "__main__":
             )
 
         axs[int(id / n_col)][id % n_col].boxplot(boxplot_data)
-        axs[int(id / n_col)][id % n_col].set_xlabel("Query")
+        axs[int(id / n_col)][id % n_col].set_xlabel("Query ID")
         axs[int(id / n_col)][id % n_col].set_ylabel(
-            "Worker Self-Reported Score"
+            "Worker Self-Reported Rating"
         )
         axs[int(id / n_col)][id % n_col].set_title(
             response_dimension.replace("bias", "balance")
             .replace("factuality", "Factual Correctness")
             .replace("satisfaction", "Overall Satisfaction")
+            .replace("confidence", "Confidence in Answer Accuracy")
             .title()
         )
     fig.tight_layout(pad=1.0)

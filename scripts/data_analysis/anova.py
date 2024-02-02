@@ -1,9 +1,12 @@
 import argparse
 from typing import List, Tuple
 
+import numpy as np
 import pandas as pd
 from statsmodels.formula.api import ols
 from statsmodels.stats.anova import anova_lm
+from statsmodels.stats.oneway import effectsize_oneway
+from statsmodels.stats.power import FTestAnovaPower
 
 
 def effect_size(
@@ -198,7 +201,7 @@ def two_way_anova(
 
 if __name__ == "__main__":
     answerability_data_df = pd.read_csv(
-        "results/user_study_output/answerability/processed/aggregated_output.csv"
+        "results/user_study_output/answerability/processed/aggregated_output_both_runs.csv"
     )
     viewpoint_data_df = pd.read_csv(
         "results/user_study_output/viewpoints/processed/aggregated_output.csv"
@@ -236,7 +239,33 @@ if __name__ == "__main__":
                 if independent_var == "questions_ids":
                     response_dimensions = ["familiarity"] + response_dimensions
                 for feature in response_dimensions:
+                    print(feature)
                     one_way_anova(data_df, feature, independent_var)
+
+                    if independent_var == "answers_ids" and feature in ["diversity", "factuality"]:
+                        means = []
+                        standard_deviations = []
+                        ns = []
+
+                        for answer_id in list(set(data_df["answers_ids"])):
+                            means.append(np.mean(list(data_df[data_df["answers_ids"] == answer_id][feature])))
+                            standard_deviations.append(np.std(list(data_df[data_df["answers_ids"] == answer_id][feature])))
+                            ns.append(len(list(data_df[data_df["answers_ids"] == answer_id][feature])))
+
+                        assumption = pd.DataFrame({'means': means, 'standard_deviations': standard_deviations, 'n': ns})
+
+                        print(assumption)
+                        
+                        assumption['variances'] = assumption.standard_deviations**2
+                        ese = effectsize_oneway(means = assumption.means,
+                                                vars_ = assumption.variances,
+                                                nobs = assumption.n, use_var="equal")
+                        ese = np.sqrt(ese)
+                        print("Cohen's f effect size of experimental condition on " + feature + ": " + str(ese))                    
+                        ese = 0.1
+                        sample_size = FTestAnovaPower().solve_power(effect_size=ese, nobs=None, 
+                                                alpha=0.05, k_groups=len(assumption), power=0.8)
+                        print("Sample size as a result of power analysis for large effect size (0.4): " + str(sample_size))
 
     elif args.type == "two-way":
         for data_df in [answerability_data_df, viewpoint_data_df]:
