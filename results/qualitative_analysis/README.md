@@ -40,10 +40,10 @@ Additionally, one-way ANOVA for the *answerability study* revealed that the over
 
 In the *viewpoints study*, our qualitative analysis shows that user satisfaction is more linked to viewpoint diversity and response completeness than information balance, differing from quantitative findings. It can follow from the fact that the concept of response diversity is better understood by users and is easier to identify. Nevertheless, the qualitative analysis shows that selected response dimensions are indeed common indicators of user satisfaction.
 
-[^1] Williams, J. Patrick. 2008. *Emergent themes, The Sage encyclopedia of qualitative research methods*. Sage Publications. 248-249
+[^1]: Williams, J. Patrick. 2008. *Emergent themes, The Sage encyclopedia of qualitative research methods*. Sage Publications. 248-249
 
-[^2] B. Barla Cambazoglu, Valeriia Baranova, Falk Scholer, Mark Sanderson, Leila Tavakoli, and Bruce Croft. 2021. *Quantifying Human-Perceived Answer Utility in Non-factoid Question Answering*. In Proceedings of the 2021 Conference on Human Information Interaction and Retrieval (CHIIR ’21). 75–84
+[^2]: B. Barla Cambazoglu, Valeriia Baranova, Falk Scholer, Mark Sanderson, Leila Tavakoli, and Bruce Croft. 2021. *Quantifying Human-Perceived Answer Utility in Non-factoid Question Answering*. In Proceedings of the 2021 Conference on Human Information Interaction and Retrieval (CHIIR ’21). 75–84
 
-[^3] Jiqun Liu. 2023. *Toward A Two-Sided Fairness Framework in Search and Recommendation*. In Proceedings of the 2023 Conference on Human Information Interaction and Retrieval (CHIIR ’23). 236–246.
+[^3]: Jiqun Liu. 2023. *Toward A Two-Sided Fairness Framework in Search and Recommendation*. In Proceedings of the 2023 Conference on Human Information Interaction and Retrieval (CHIIR ’23). 236–246.
 
-[^4] Andrew Turpin, Falk Scholer, Stefano Mizzaro, and Eddy Maddalena. 2015. *The Benefits of Magnitude Estimation Relevance Assessments for Information Retrieval Evaluation*. In Proceedings of the 38th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR ’15). 565–574.
+[^4]: Andrew Turpin, Falk Scholer, Stefano Mizzaro, and Eddy Maddalena. 2015. *The Benefits of Magnitude Estimation Relevance Assessments for Information Retrieval Evaluation*. In Proceedings of the 38th International ACM SIGIR Conference on Research and Development in Information Retrieval (SIGIR ’15). 565–574.

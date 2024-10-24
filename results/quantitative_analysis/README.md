@@ -44,7 +44,7 @@ Viewpoints Study:
 | Balance | Familiarity | 0.639 | -  |
 | Overall Satisfaction | Familiarity | 0.378 | -  |
 
-The results are generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
+The results are generated using [this script](../../scripts/data_analysis/quantitative_analysis.py) and the following command:
 
 `` python -m scripts.data_analysis.quantitative_analysis --type one-way ``
 
@@ -64,7 +64,7 @@ For the *viewpoints study*:
 
 The results indicate that an additional five workers per HIT are required to observe a statistically significant effect of experimental condition on the factual correctness in the *answerability study*, while the 3 workers we initially used in the *viewpoints study* are shown to be sufficient. Additional data for the *answerability study* is collected in the second run with the same worker requirements and rewards. 
 
-The results of the power analysis can be generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
+The results of the power analysis can be generated using [this script](../../scripts/data_analysis/quantitative_analysis.py) and the following command:
 
 `` python -m scripts.data_analysis.quantitative_analysis --type power-analysis ``
 
@@ -103,7 +103,7 @@ Viewpoints Study:
 | Overall Satisfaction | Contr. Balance | 1.0 | -  | 
 | Overall Satisfaction | Contr. Diversity * Contr. Balance | 0.0 | M | 
 
-The results are generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
+The results are generated using [this script](../../scripts/data_analysis/quantitative_analysis.py) and the following command:
 
 `` python -m scripts.data_analysis.quantitative_analysis --type two-way ``
 
@@ -190,7 +190,7 @@ Viewpoints Study:
 | Overall Satisfaction | Contr. Diversity * Contr. Balance * Familiarity | 0.38 | -- |
 
 
-The results are generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
+The results are generated using [this script](../../scripts/data_analysis/quantitative_analysis.py) and the following command:
 
 `` python -m scripts.data_analysis.quantitative_analysis --type three-way ``
 
@@ -211,7 +211,7 @@ Viewpoints Study:
 | Transparency |  0.727  |
 | Balance |  0.785  |
 
-The results are generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
+The results are generated using [this script](../../scripts/data_analysis/quantitative_analysis.py) and the following command:
 
 `` python -m scripts.data_analysis.quantitative_analysis --type pearson ``
 
