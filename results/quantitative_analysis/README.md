@@ -4,68 +4,49 @@ The following sections provides the results reported in the paper along with the
 
 ## One-way ANOVA
 
-### One-way ANOVA for experimental condition
-
-Answerability Study: 
-
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-|Factual Correctness | Experimental Condition | 2.5 | 0.058 | 0.005 | -- |
-|Confidence in Answer Accuracy | Experimental Condition | 0.588 | 0.623 | -0.001 | -- |
-|Overall Satisfaction | Experimental Condition | 1.003 | 0.391 | 0.0 | -- |
-
-Viewpoints Study:
-
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-|Diversity | Experimental Condition |  31.774 | 0.0 | 0.186 | L |
-|Transparency | Experimental Condition | 21.751 | 0.0 | 0.133 | M |
-|Balance | Experimental Condition |  17.514 | 0.0 | 0.109 | M |
-|Overall Satisfaction | Experimental Condition | 17.687 | 0.0 | 0.11 | M |
-
 ### One-way ANOVA for query
 
 Answerability Study:
 
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-| Familiarity | Query |  9.022 | 0.0 | 0.07 | M |
-|Factual Correctness | Query | 3.538 | 0.0 | 0.023 | S |
-|Confidence in Answer Accuracy | Query | 2.223 | 0.019 | 0.011 | S |
-|Overall Satisfaction | Query | 5.051 | 0.0 | 0.037 | S |
+| Dependent Variable | Independent Variable(s) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Familiarity | Query | 0.0 | M |
+| Factual Corr. | Query | 0.0 | S |
+| Conf. in Answer Acc. | Query | 0.019 | S |
+| Overall Satisfaction | Query | 0.0 | S |
 
 Viewpoints Study:
 
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-|Familiarity | Query | 10.186 | 0.0 | 0.234 | L |
-|Diversity | Query | 1.135 | 0.338 | 0.004 | - |
-|Transparency | Query | 0.979 | 0.458 | -0.001 | - |
-|Balance | Query |  2.136 | 0.027 | 0.036 | S |
-|Overall Satisfaction | Query | 2.698 | 0.005 | 0.054 | S |
+| Dependent Variable | Independent Variable(s) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Familiarity | Query | 0.0 | L |
+| Diversity | Query | 0.338 | -  |
+| Transparency | Query | 0.458 | -  |
+| Balance | Query | 0.027 | S |
+| Overall Satisfaction | Query | 0.005 | S |
 
 ### One-way ANOVA for the background knowledge
 
 Answerability Study:
 
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-|Factual Correctness | Familiarity | 4.326 | 0.005 | 0.01 | S |
-|Confidence in Answer Accuracy | Familiarity | 16.374 | 0.0 | 0.046 | S |
-|Overall Satisfaction | Familiarity | 23.738 | 0.0 | 0.066 | M |
+| Dependent Variable | Independent Variable(s) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Factual Correctness | Familiarity | 0.005 | S |
+| Conf. in Answer Acc. | Familiarity | 0.0 | S |
+| Overall Satisfaction | Familiarity | 0.0 | M |
 
 Viewpoints Study:
 
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-|Diversity | Familiarity | 1.041 | 0.375 | 0.0 | - |
-|Transparency | Familiarity | 0.831 | 0.478 | -0.002 | - |
-|Balance | Familiarity | 0.565 | 0.639 | -0.005 | -  |
-|Overall Satisfaction | Familiarity | 1.034 | 0.378 | 0.0 | - |
+| Dependent Variable | Independent Variable(s) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Diversity | Familiarity | 0.375 | -  |
+| Transparency | Familiarity | 0.478 | -  |
+| Balance | Familiarity | 0.639 | -  |
+| Overall Satisfaction | Familiarity | 0.378 | -  |
 
 The results are generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
 
-`` python -m scripts.data_analysis.anova --type one-way ``
+`` python -m scripts.data_analysis.quantitative_analysis --type one-way ``
 
 ### Power Analysis
 
@@ -85,112 +66,159 @@ The results indicate that an additional five workers per HIT are required to obs
 
 The results of the power analysis can be generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
 
-`` python -m scripts.data_analysis.anova --type power-analysis ``
+`` python -m scripts.data_analysis.quantitative_analysis --type power-analysis ``
 
 ## Two-way ANOVA
 
-### Two-way ANOVA for the interactions between experimental condition and familiarity
+### Two-way ANOVA for the interactions between user-judged and controlled response dimensions
 
 Answerability Study:
 
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-| Factual Correctness | Experimental Condition | 2.387 | 0.068 | 0.004 | - |
-| Factual Correctness | Familiarity | 4.202 | 0.006 | 0.01 | S |
-| Factual Correctness | Experimental Condition * Familiarity | 0.69 | 0.718 | -0.003 | - |
-| Confidence in Answer Accuracy | Experimental Condition | 0.532 | 0.66 | -0.001 | - |
-| Confidence in Answer Accuracy | Familiarity | 16.216 | 0.0 | 0.045 | S |
-| Confidence in Answer Accuracy | Experimental Condition * Familiarity | 0.662 | 0.743 | -0.003 | - |
-| Overall Satisfaction | Experimental Condition | 0.943 | 0.419 | -0.0 | - |
-| Overall Satisfaction | Familiarity | 23.538 | 0.0 | 0.066 | M |
-| Overall Satisfaction | Experimental Condition * Familiarity | 0.699 | 0.71 | -0.003 | - |
+| Dependent Variable (User-Judged) | Independent Variable(s) (Controlled) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Factual Correctness | Contr. Fact. Corr. | 0.014 | - | 
+| Factual Correctness | Contr. Source |  0.664 | -  | 
+| Factual Correctness | Contr. Fact. Corr. * Contr. Source |  0.267 | -  | 
+| Conf. in Answer Acc. | Contr. Fact. Corr. | 0.244 | -  | 
+| Conf. in Answer Acc. | Contr. Source |  0.763 | -  | 
+| Conf. in Answer Acc. | Contr. Fact. Corr. * Contr. Source |  0.575 | -  | 
+| Overal Satisfaction | Contr. Fact. Corr. | 0.306 | -  | 
+| Overal Satisfaction | Contr. Source |  0.394 | -  | 
+| Overal Satisfaction | Contr. Fact. Corr. * Contr. Source |  0.267 | -  | 
 
 Viewpoints Study:
 
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-| Diversity | Experimental Condition | 30.474 | 0.0 | 0.179 | L |
-| Diversity | Familiarity | 0.312 | 0.816 | -0.008 | - |
-| Diversity | Experimental Condition * Familiarity | 1.565 | 0.158 | 0.012 | S |
-| Transparency | Experimental Condition | 20.813 | 0.0 | 0.128 | M |
-| Transparency | Familiarity | 0.352 | 0.788 | -0.007 | - |
-| Transparency | Experimental Condition * Familiarity | 1.269 | 0.272 | 0.006 | - |
-| Balance | Experimental Condition | 16.83 | 0.0 | 0.105 | M |
-| Balance | Familiarity | 0.209 | 0.89 | -0.009 | - |
-| Balance | Experimental Condition * Familiarity | 1.282 | 0.266 | 0.006 | - |
-| Overall Satisfaction | Experimental Condition | 17.693 | 0.0 | 0.11 | M |
-| Overall Satisfaction | Familiarity | 1.08 | 0.358 | 0.001 | - |
-| Overall Satisfaction | Experimental Condition * Familiarity | 1.322 | 0.247 | 0.007 | - |
-
-### Two-way ANOVA for the interactions between experimental condition and query
-
-Answerability Study:
-
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-| Factual Correctness | Experimental Condition | 2.629 | 0.049 | 0.005 | - |
-| Factual Correctness | Query | 3.652 | 0.0 | 0.024 | S |
-| Factual Correctness | Experimental Condition * Query | 1.951 | 0.003 | 0.026 | S |
-| Confidence in Answer Accuracy | Experimental Condition | 0.613 | 0.607 | -0.001 | - |
-| Confidence in Answer Accuracy | Query | 2.288 | 0.015 | 0.012 | S |
-| Confidence in Answer Accuracy | Experimental Condition * Query | 2.07 | 0.001 | 0.029 | S |
-| Overall Satisfaction | Experimental Condition | 1.068 | 0.362 | 0.0 | - |
-| Overall Satisfaction | Query | 5.181 | 0.0 | 0.038 | S |
-| Overall Satisfaction | Experimental Condition * Query | 1.898 | 0.004 | 0.025 | S |
-Viewpoints Study:
-
-| Dependent Variable | Independent Variable(s) | F | p-value | Unbalanced Estimator | Effect Size |
-| --- | --- | --- | --- | --- | --- |
-| Diversity | Experimental Condition | 34.433 | 0.0 | 0.198 | L |
-| Diversity | Query | 1.505 | 0.147 | 0.017 | S |
-| Diversity | Experimental Condition * Query | 1.989 | 0.011 | 0.062 | M |
-| Transparency | Experimental Condition | 21.514 | 0.0 | 0.132 | M |
-| Transparency | Query | 1.118 | 0.35 | 0.004 | - |
-| Transparency | Experimental Condition * Query | 0.779 | 0.724 | -0.015 | - |
-| Balance | Experimental Condition | 18.373 | 0.0 | 0.114 | M |
-| Balance | Query | 2.423 | 0.012 | 0.045 | S |
-| Balance | Experimental Condition * Query | 1.015 | 0.443 | 0.001 | - |
-| Overall Satisfaction | Experimental Condition | 19.503 | 0.0 | 0.121 | M |
-| Overall Satisfaction | Query | 3.165 | 0.001 | 0.067 | M |
-| Overall Satisfaction | Experimental Condition * Query | 1.441 | 0.113 | 0.029 | S |
+| Dependent Variable (User-Judged) | Independent Variable(s) (Controlled) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Diversity | Contr. Diversity | 0.0 | M | 
+| Diversity | Contr. Balance | 1.0 | -  | 
+| Diversity | Contr. Diversity * Contr. Balance | 0.0 | M | 
+| Transparency | Contr. Diversity | 0.0 | M | 
+| Transparency | Contr. Balance | 1.0 | -  | 
+| Transparency | Contr. Diversity * Contr. Balance | 0.0 | M | 
+| Balance | Contr. Diversity | 0.0 | S | 
+| Balance | Contr. Balance | 1.0 | -  | 
+| Balance | Contr. Diversity * Contr. Balance | 0.0 | S | 
+| Overall Satisfaction | Contr. Diversity | 0.0 | S | 
+| Overall Satisfaction | Contr. Balance | 1.0 | -  | 
+| Overall Satisfaction | Contr. Diversity * Contr. Balance | 0.0 | M | 
 
 The results are generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
 
-`` python -m scripts.data_analysis.anova --type two-way ``
+`` python -m scripts.data_analysis.quantitative_analysis --type two-way ``
 
-## Generalized Linear Models
+## Three-way ANOVA
+
+### Three-way ANOVA for the interactions between query and controlled response dimensions
 
 Answerability Study:
 
-| Dependent Variable | Explanatory Variables | p-value |
-| --- | --- | --- |
-| Familiarity | Factual Correctness | 0.465 | 
-| Familiarity | Confidence in Answer Accuracy | 0.136 | 
-| Familiarity | Overall Satisfaction | 0.062 | 
-| Overall Satisfaction | Familiarity | 0.388 |
-| Overall Satisfaction | Factual Correctness | 0.001 |
-| Overall Satisfaction | Confidence in Answer Accuracy | 0.000 | 
+| Dependent Variable (User-Judged) | Independent Variable(s) (Controlled) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Factual Correctness | Query | 0.0 | S |
+| Factual Correctness | Contr. Fact. Corr. * Query | 0.002 | S |
+| Factual Correctness | Contr. Source * Query | 0.048 | - |
+| Factual Correctness | Contr. Fact. Corr. * Contr. Source * Query | 0.439 | -  |
+| Conf. in Answer Acc. | Query | 0.015 | S |
+| Conf. in Answer Acc. | Contr. Fact. Corr. * Query | 0.0 | S |
+| Conf. in Answer Acc. | Contr. Source * Query | 0.118 | -  |
+| Conf. in Answer Acc. | Contr. Fact. Corr. * Contr. Source * Query | 0.341 | -  |
+| Overall Satisfaction | Query | 0.0 | S |
+| Overall Satisfaction | Contr. Fact. Corr. * Query | 0.0 | S |
+| Overall Satisfaction | Contr. Source * Query | 0.339 | -  |
+| Overall Satisfaction | Contr. Fact. Corr. * Contr. Source * Query | 0.598 | -  |
 
 Viewpoints Study:
 
-| Dependent Variable | Explanatory Variables | p-value |
-| --- | --- | --- |
-| Familiarity | Diversity | 0.567 | 
-| Familiarity | Transparency | 0.886 | 
-| Familiarity | Balance | 0.683 | 
-| Familiarity | Overall Satisfaction | 0.848 | 
-| Overall Satisfaction | Familiarity | 0.972 |
-| Overall Satisfaction | Diversity | 0.209 | 
-| Overall Satisfaction | Transparency | 0.436 | 
-| Overall Satisfaction | Balance | 0.003 | 
+| Dependent Variable (User-Judged) | Independent Variable(s) (Controlled) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Diversity | Query | 0.147 | S  |
+| Diversity | Contr. Diversity * Query | 0.101 | S  |
+| Diversity | Contr. Balance * Query | 1.0 | -  |
+| Diversity | Contr. Diversity * Contr. Balance * Query | 0.016 | S |
+| Transparency | Query | 0.35 | -  | 
+| Transparency | Contr. Diversity * Query | 0.582 | -  | 
+| Transparency | Contr. Balance * Query | 1.0 | -  | 
+| Transparency | Contr. Diversity * Contr. Balance * Query | 0.689 | -  | 
+| Balance | Query | 0.012 | S |
+| Balance | Contr. Diversity * Query | 0.559 | -  |
+| Balance | Contr. Balance * Query | 1.0 | -  |
+| Balance | Contr. Diversity * Contr. Balance * Query | 0.316 | -  |
+| Overall Satisfaction | Query | 0.001 | M |
+| Overall Satisfaction | Contr. Diversity * Query | 0.599 | -  |
+| Overall Satisfaction | Contr. Balance * Query | 1.0 | -  |
+| Overall Satisfaction | Contr. Diversity * Contr. Balance * Query | 0.034 | S |
 
-The results are generated using [this script](../../scripts/data_analysis/glm.py) and the following command:
+### Three-way ANOVA for the interactions between familiarity and controlled response dimensions
 
-`` python -m scripts.data_analysis.glm ``
+Answerability Study:
+
+| Dependent Variable (User-Judged) | Independent Variable(s) (Controlled) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Fact. Corr. | Familiarity | 0.006 | S |
+| Fact. Corr. | Contr. Fact. Corr. * Familiarity | 0.962 | -- |
+| Fact. Corr. | Contr. Source * Familiarity | 0.275 | -- |
+| Fact. Corr. | Contr. Fact. Corr. * Contr. Source * Familiarity | 0.56 | -- |
+| Conf. in Answer Acc. | Familiarity | 0.0 | S |
+| Conf. in Answer Acc. | Contr. Fact. Corr. * Familiarity | 0.894 | -- |
+| Conf. in Answer Acc. | Contr. Source * Familiarity | 0.556 | -- |
+| Conf. in Answer Acc. | Contr. Fact. Corr. * Contr. Source * Familiarity | 0.348 | -- |
+| Overall Satisfaction | Familiarity | 0.0 | M |
+| Overall Satisfaction | Contr. Fact. Corr. * Familiarity | 0.544 | -- |
+| Overall Satisfaction | Contr. Source * Familiarity | 0.381 | -- |
+| Overall Satisfaction | Contr. Fact. Corr. * Contr. Source * Familiarity | 0.777 | -- |
+
+Viewpoints Study:
+
+| Dependent Variable (User-Judged) | Independent Variable(s) (Controlled) | p-value | Effect Size |
+| --- | --- | --- | --- |
+| Diversity | Familiarity | 0.816 | -- |
+| Diversity | Contr. Diversity * Familiarity | 0.056 | S |
+| Diversity | Contr. Balance * Familiarity | 1.0 | -- |
+| Diversity | Contr. Diversity * Contr. Balance * Familiarity | 0.628 | -- |
+| Transparency | Familiarity | 0.788 | -- |
+| Transparency | Contr. Diversity * Familiarity | 0.257 | -- |
+| Transparency | Contr. Balance * Familiarity | 1.0 | -- |
+| Transparency | Contr. Diversity * Contr. Balance * Familiarity | 0.316 | -- |
+| Balance | Familiarity | 0.89 | -- |
+| Balance | Contr. Diversity * Familiarity | 0.325 | -- |
+| Balance | Contr. Balance * Familiarity | 1.0 | -- |
+| Balance | Contr. Diversity * Contr. Balance * Familiarity | 0.242 | -- |
+| Overall Satisfaction | Familiarity | 0.358 | -- |
+| Overall Satisfaction | Contr. Diversity * Familiarity | 0.187 | -- |
+| Overall Satisfaction | Contr. Balance * Familiarity | 1.0 | -- |
+| Overall Satisfaction | Contr. Diversity * Contr. Balance * Familiarity | 0.38 | -- |
+
+
+The results are generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
+
+`` python -m scripts.data_analysis.quantitative_analysis --type three-way ``
+
+## Pearson correlation
+
+Answerability Study:
+
+| Response Dimension | Correlation Coefficient |
+| --- | --- |
+| Factual Correctness |  0.634  |
+| Conf. in Answer Acc. |  0.660  |
+
+Viewpoints Study:
+
+| Response Dimension | Correlation Coefficient |
+| --- | --- |
+| Diversity |  0.720 |
+| Transparency |  0.727  |
+| Balance |  0.785  |
+
+The results are generated using [this script](../../scripts/data_analysis/anova.py) and the following command:
+
+`` python -m scripts.data_analysis.quantitative_analysis --type pearson ``
+
 
 ## Data distribution
 
-The distribution of user-judged response dimensions per query for both user studies can be generated using [this script](../../scripts/data_analysis/data_distribution.py) and the following command:
+We show that user-judged satisfaction ratings are typically concentrated around higher values of the scale. The distribution of user-judged response dimensions per query for both user studies can be generated using [this script](../../scripts/data_analysis/data_distribution.py) and the following command:
 
 `` python -m scripts.data_analysis.data_distribution ``
 
