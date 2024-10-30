@@ -2,9 +2,11 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-This repository provides resources developed within the following article:
+This repository provides resources developed within the following article [[PDF](https://arxiv.org/abs/2410.21529)]:
 
 > W. Łajewska, K. Balog, D. Spina, and J. Trippas. **Can Users Detect Biases or Factual Errors in Generated Responses in Conversational Information-Seeking?** In: Proceedings of the 2024 Annual International ACM SIGIR Conference on Research and Development in Information Retrieval in the Asia Pacific Region (SIGIR-AP ’24). ACM. Tokyo, Japan. December 2024. [10.1145/3673791.3698409](https://doi.org/10.1145/3673791.3698409)
+
+An extended version of this paper is available on [arXiv](https://arxiv.org/abs/2410.21529).
 
 ## Summary
 
